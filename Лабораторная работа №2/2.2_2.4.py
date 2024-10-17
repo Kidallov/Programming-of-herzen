@@ -24,7 +24,7 @@ def calculate(x, y, action):
     else:
         return "Invalid action!"
 
-def addition(x, y):  # Исправлено: "addittion" на "addition"
+def addition(x, y):
     return x + y
 
 def subtraction(x, y):
@@ -53,7 +53,7 @@ def calculator():
             if input("Do you want to perform another operation? (Dial 'no' to exit): ") == "no":
                 break
         else:
-            print("Error! This number is not from the list. Please enter the transaction number.")
+            print("Error!")
 
 
 class TestCalculator(unittest.TestCase):
@@ -81,4 +81,4 @@ class TestCalculator(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-    #calculator()
+    calculator()
