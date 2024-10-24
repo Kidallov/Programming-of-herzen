@@ -44,4 +44,4 @@ def calculator(action, *numbers):
 
 if __name__ == "__main__":
 
-    calculator('/', 46, 15)
+    calculator()
