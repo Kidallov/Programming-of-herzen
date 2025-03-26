@@ -2,9 +2,17 @@ import sys
 import json
 import os
 import sqlite3
+import logging
+import gc
 from datetime import datetime
 from functools import wraps
 from contextlib import contextmanager
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+    stream=sys.stdout
+)
 
 def trace(func=None, *, handle=sys.stdout):
     if func is None:
@@ -97,11 +105,15 @@ def showlogs(db_connection):
 
 @contextmanager
 def doc():
+    logging.ihfo("Создание in-memory SQLite соединения")
     handle_for_f4 = sqlite3.connect(":memory:")
     try:
         yield handle_for_f4
     finally:
+        logging.info("Закрытие соединения с базой данных")
         handle_for_f4.close()
+        logging.info("Освобождение памяти через gc.collect()")
+        gc.collect()
 
 with doc() as handle:
     @log_to_sqlite(handle)
