@@ -105,7 +105,7 @@ def showlogs(db_connection):
 
 @contextmanager
 def doc():
-    logging.ihfo("Создание in-memory SQLite соединения")
+    logging.info("Создание in-memory SQLite соединения")
     handle_for_f4 = sqlite3.connect(":memory:")
     try:
         yield handle_for_f4
