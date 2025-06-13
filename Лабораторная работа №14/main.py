@@ -31,8 +31,6 @@ def get_session() -> Generator:
     with Session(engine) as session:
         yield session
 
-# CRUD API
-
 @app.get("/terms", response_model=list[Term])
 def get_all_terms(session: Session = Depends(get_session)):
     return session.exec(select(Term)).all()
@@ -87,7 +85,7 @@ def read_about():
         locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
     except:
         pass
-    return {'author': "Nick", "datetime": datetime.now().strftime("%A, %d.%m.%Y, %H:%M")}
+    return {'author': "Aleksandr", "datetime": datetime.now().strftime("%A, %d.%m.%Y, %H:%M")}
 
 @app.get("/valute/{valute_id}")
 def read_valute(valute_id: str):
