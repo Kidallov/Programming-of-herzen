@@ -12,7 +12,6 @@ class Timer:
         print(f"Elapsed time: {elapsed_time} seconds")
 
 with Timer() as timer:
-    # Ваш блок кода
     def fib(n):
         a, b = 0, 1
         for __ in range(n):
